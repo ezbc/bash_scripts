@@ -1,9 +1,11 @@
 #!/bin/bash
 # example:
-# $ replace-text.sh ./ s/apple/orange/g
+# $ replace-text.sh ./ text-to-replace replacement-text
 
 # find and replace strings in files with sed regex
 # avoid directories
 
-find $1 -type f -exec sed -i -e "$2" {} \;
+#find $1 -type f -exec sed -i -e "$2" {} \;
+
+grep -rl "$2" $1 | xargs sed -i "s/$2/$3/g"
 
