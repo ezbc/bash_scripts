@@ -5,7 +5,5 @@
 # find and replace strings in files with sed regex
 # avoid directories
 
-#find $1 -type f -exec sed -i -e "$2" {} \;
-
-grep -rl "$2" $1 | xargs sed -i "s/$2/$3/g"
+grep -rl --exclude-dir="*.git" "$2" "$1" | xargs sed -i s^"$2"^"$3"^g
 
